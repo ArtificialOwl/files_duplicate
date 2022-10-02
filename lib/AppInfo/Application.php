@@ -31,15 +31,10 @@ declare(strict_types=1);
 
 namespace OCA\FilesDuplicate\AppInfo;
 
-use OCA\Files\Event\LoadSidebar;
-use OCA\FilesDuplicate\Listener\FileShareUpdate;
-use OCA\FilesDuplicate\Listener\LoadSidebarScript;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\Share\Events\ShareCreatedEvent;
-use OCP\Share\Events\ShareDeletedEvent;
 use Throwable;
 
 /**
@@ -48,7 +43,7 @@ use Throwable;
  * @package OCA\FilesDuplicate\AppInfo
  */
 class Application extends App implements IBootstrap {
-	public const APP_ID = 'related_resources';
+	public const APP_ID = 'files_duplicate';
 
 
 	/**
@@ -63,9 +58,6 @@ class Application extends App implements IBootstrap {
 	 * @param IRegistrationContext $context
 	 */
 	public function register(IRegistrationContext $context): void {
-		$context->registerEventListener(LoadSidebar::class, LoadSidebarScript::class);
-		$context->registerEventListener(ShareCreatedEvent::class, FileShareUpdate::class);
-		$context->registerEventListener(ShareDeletedEvent::class, FileShareUpdate::class);
 	}
 
 

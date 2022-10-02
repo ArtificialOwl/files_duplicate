@@ -1,35 +1,13 @@
-app_name=Related_Resources
+app_name=FilesDuplicate
 
 build_dir=$(CURDIR)/build/artifacts
 sign_dir=$(build_dir)/sign
 package_name=$(shell echo $(app_name) | tr '[:upper:]' '[:lower:]')
-version=1.1.0-alpha1
+version=0.1.0
 
 all: release
 
 appstore: release
-
-npm-init:
-	npm install
-
-npm-update:
-	npm update
-
- # Building
-build-js:
-	npm run dev
-
-build-js-production:
-	npm run build
-
-watch-js:
-	npm run watch
-
-clean-js:
-	rm -rf js
-
-clean-dev:
-	rm -rf node_modules
 
 cs-check: composer-dev
 	composer cs:check
@@ -39,7 +17,6 @@ cs-fix: composer-dev
 
 clean:
 	rm -rf $(build_dir)
-	rm -rf node_modules
 
 # composer packages
 composer:
@@ -50,9 +27,7 @@ composer-dev:
 	composer install --prefer-dist --dev
 	composer upgrade --prefer-dist --dev
 
-js: clean-js npm-init build-js-production
-
-release: clean composer js
+release: clean composer
 	mkdir -p $(sign_dir)
 	rsync -a \
 	--exclude=/build \
