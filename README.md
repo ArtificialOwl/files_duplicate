@@ -13,4 +13,3 @@ Will copy a file identified by its id to the root folder of the recipient.
 - `to` (option) copy the file to an account other than the defined owner,
 - `name` (option) set a specific filename for the copied version of the file. Default: `[COPY] File #<fileId>`
 
-to

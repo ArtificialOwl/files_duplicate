@@ -57,10 +57,11 @@ class FilesService {
 
 
 	/**
-	 * @param string $owner
-	 * @param int $fileId
-	 * @param string $to
-	 * @param string $copyName
+	 * @param string $owner - owner of the file to duplicate
+	 * @param int $fileId - id of the file to duplicate
+	 * @param string $to - account to copy the file to
+	 * @param string $copyName - new name for the copied file
+	 * @param bool $objectStorage - bypass filecache and get file directly from object storage
 	 *
 	 * @throws Exception
 	 */
