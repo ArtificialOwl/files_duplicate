@@ -145,6 +145,10 @@ class FilesService {
 			throw new Exception('configuration for objectstore is not recognized');
 		}
 
+		$bucket = $this->config->getUserValue($userId, 'homeobjectstore', 'bucket', null);
+		if ($bucket !== null) {
+			$params['bucket'] = $bucket;
+		}
 		$store = new $class($params);
 
 		return $store->readObject('urn:oid:' . $fileId);

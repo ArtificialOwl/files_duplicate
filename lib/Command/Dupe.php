@@ -29,6 +29,7 @@ declare(strict_types=1);
 
 namespace OCA\FilesDuplicate\Command;
 
+use Exception;
 use OC\Core\Command\Base;
 use OCA\FilesDuplicate\Service\FilesService;
 use Symfony\Component\Console\Input\InputArgument;
@@ -68,7 +69,7 @@ class Dupe extends Base {
 	 * @param OutputInterface $output
 	 *
 	 * @return int
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$owner = $input->getArgument('owner');
